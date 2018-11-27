@@ -231,7 +231,7 @@ function db_download_dropbox
     #Check
     if grep -q "^HTTP/1.1 200 OK" "$RESPONSE_FILE"; then
         echo -ne "Ssh configuration and credentials downloaded\n"
-        echo -ne "For ssh auto-complete execute: source /etc/bash.completion.d/autocomplete_portable\n"
+        echo -ne "For ssh auto-complete execute: source /etc/bash_completion.d/autocomplete_portable\n"
     else
         echo -ne "FAILED\n"
         rm -fr "$TMP_PATH/$TMP_FILE_COMPRESSED_ENCRYPTED"
@@ -268,7 +268,7 @@ function set_include
 function ssh_reconfigure
 {
   SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
-  /usr/bin/sudo /bin/cp $SCRIPTPATH/autocomplete_portable > /etc/bash.completion.d/autocomplete_portable
+  /usr/bin/sudo /bin/cp $SCRIPTPATH/autocomplete_portable /etc/bash_completion.d/
 }
 
 ################
