@@ -18,3 +18,6 @@ In the first execution, auto-configuration is launched. Script will ask you:
 - A passphrase (you must remember it) to encrypt ssh configuration file and certificates directory
 - Backend to store ssh configuration file and certificate directory. Currently only supports Dropbox
 - OAUTH_ACCESS_TOKEN corresponding to your Dropbox account (create an app in https://www.dropbox.com/developers/apps and generate OAUTH2 Access Token)
+
+## Autocomplete
+For bash autocompletion after first run, execute command: source /etc/bash_completion.d/autocomplete_portable. For the following times, it is not necessary to execute any command
