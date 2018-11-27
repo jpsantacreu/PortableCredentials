@@ -260,7 +260,7 @@ function set_include
 {
   $GREP_BIN $SSH_CONFIG_FILE ~/.ssh/config
   if [[ $? != 0 ]]; then
-    echo "Include $SSH_CONFIG_FILE" >> ~/.ssh/config
+    echo "Include ~/$SSH_CONFIG_FILE" >> ~/.ssh/config
   fi
 }
 
