@@ -231,6 +231,8 @@ function db_download_dropbox
     #Check
     if grep -q "^HTTP/1.1 200 OK" "$RESPONSE_FILE"; then
         echo -ne "Ssh configuration and credentials downloaded\n"
+        echo -ne "For ssh auto-complete execute: source /etc/bash.completion.d/portable_ssh\n"
+        echo -ne "For scp auto-complete execute: source /etc/bash.completion.d/portable_scp\n"
     else
         echo -ne "FAILED\n"
         rm -fr "$TMP_PATH/$TMP_FILE_COMPRESSED_ENCRYPTED"
@@ -267,7 +269,7 @@ function set_include
 function ssh_reconfigure
 {
   # Autocomplete ssh with ssh config entrys
-  _ssh() 
+  sudo echo "_ssh() 
   {
     local cur prev opts
     COMPREPLY=()
@@ -277,10 +279,10 @@ function ssh_reconfigure
     COMPREPLY=( $(compgen -W "$opts" -- ${cur}) )
       return 0
   }
-  complete -F _ssh ssh
+  complete -F _ssh ssh" > /etc/bash.completion.d/portable_ssh
 
   # Autocomplete scp with ssh config entrys
-  _scp() 
+  sudo echo "_scp() 
   {
     local cur prev opts
     COMPREPLY=()
@@ -290,7 +292,7 @@ function ssh_reconfigure
     COMPREPLY=( $(compgen -W "$opts" -- ${cur}) )
       return 0
   }
-  complete -F _scp scp
+  complete -F _scp scp" > /etc/bash.completion.d/portable_scp
 }
 
 ################
