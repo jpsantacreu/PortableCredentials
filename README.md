@@ -1,7 +1,7 @@
 # PortableCredentials
 Access to your ssh config file and your credentials wherever you are
 
-Upload/download ssh configuration file (~/.ssh/config_portable) and yours certificates to cloud (currently it only supports Dropbox backend)
+Upload/download ssh configuration file (~/.ssh/config_portable) and yours certificates to cloud (currently only supports Dropbox backend)
 
 ## Run it
 Execution syntax:
