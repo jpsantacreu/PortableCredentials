@@ -231,8 +231,7 @@ function db_download_dropbox
     #Check
     if grep -q "^HTTP/1.1 200 OK" "$RESPONSE_FILE"; then
         echo -ne "Ssh configuration and credentials downloaded\n"
-        echo -ne "For ssh auto-complete execute: source /etc/bash.completion.d/portable_ssh\n"
-        echo -ne "For scp auto-complete execute: source /etc/bash.completion.d/portable_scp\n"
+        echo -ne "For ssh auto-complete execute: source /etc/bash.completion.d/autocomplete_portable\n"
     else
         echo -ne "FAILED\n"
         rm -fr "$TMP_PATH/$TMP_FILE_COMPRESSED_ENCRYPTED"
@@ -268,31 +267,8 @@ function set_include
 # Reconfigure ssh if dont use default config
 function ssh_reconfigure
 {
-  # Autocomplete ssh with ssh config entrys
-  sudo echo "_ssh() 
-  {
-    local cur prev opts
-    COMPREPLY=()
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    prev="${COMP_WORDS[COMP_CWORD-1]}"
-    opts=$(grep '^Host' ~/$SSH_CONFIG_FILE | awk '{print $2}')
-    COMPREPLY=( $(compgen -W "$opts" -- ${cur}) )
-      return 0
-  }
-  complete -F _ssh ssh" > /etc/bash.completion.d/portable_ssh
-
-  # Autocomplete scp with ssh config entrys
-  sudo echo "_scp() 
-  {
-    local cur prev opts
-    COMPREPLY=()
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    prev="${COMP_WORDS[COMP_CWORD-1]}"
-    opts=$(grep '^Host' ~/$SSH_CONFIG_FILE | awk '{print $2}')
-    COMPREPLY=( $(compgen -W "$opts" -- ${cur}) )
-      return 0
-  }
-  complete -F _scp scp" > /etc/bash.completion.d/portable_scp
+  SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+  /bin/cp $SCRIPTPATH/autocomplete_portable > /etc/bash.completion.d/autocomplete_portable
 }
 
 ################
