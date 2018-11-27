@@ -268,7 +268,7 @@ function set_include
 function ssh_reconfigure
 {
   SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
-  /bin/cp $SCRIPTPATH/autocomplete_portable > /etc/bash.completion.d/autocomplete_portable
+  /usr/bin/sudo /bin/cp $SCRIPTPATH/autocomplete_portable > /etc/bash.completion.d/autocomplete_portable
 }
 
 ################
