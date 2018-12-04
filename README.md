@@ -1,5 +1,5 @@
 # PortableCredentials
-Access to your ssh config file and your credentials wherever you are
+Store your ssh config and certifications in cloud to access wherever you are
 
 Upload/download ssh configuration file (~/.ssh/config_portable) and yours certificates to cloud (currently only supports Dropbox backend)
 
